@@ -1,0 +1,76 @@
+<html>
+<head>
+    <title>Guessing challenge 🎯</title>
+    <style>
+        body{
+            background-color: rgb(243, 177, 243);
+            margin:0;
+            height:50vh;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            height:75vh;
+
+        }
+        .box{
+            background-color:white;
+            text-align: center;
+            padding: 50px;
+            border-radius: 100px;
+            outline: 2px solid black;
+            
+        }
+        button{
+            color:white;
+            background-color: red;
+            width:70px;
+            height:30px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="box">
+<h2>Guessing challenge 🎯</h2>
+<p>Guess number between 1 to 100</p>
+<input id="guessno"><br><br>
+<button onclick="check()">Check</button>
+<p id="res">Let's try</p>
+<p id="score">Score:10</p>
+<script>
+    var guessno=document.getElementById("guessno")
+    var res=document.getElementById("res")
+    var randomnum=Math.floor(Math.random()*100)+1
+    var score=document.getElementById("score")
+    var tscore=10
+    function check(){
+        var enterednumber=Number(guessno.value)
+        if (randomnum>enterednumber){
+            console.log("Guess higher")
+            res.textContent="Guess higher ⬆️"
+            tscore=tscore-1
+            score.textContent="Score:"+tscore
+        }
+        else if(randomnum<enterednumber){
+            console.log("Guess lower")
+            res.textContent="Guess lower ⬇️"
+            tscore=tscore-1
+            score.textContent="Score:"+tscore
+        }
+        else{
+            console.log("congrats right")
+            res.textContent="CORRECT 🎊"
+            alert("YOU WON 🎊 Score:"+ tscore)
+        }
+        if (tscore==0){
+            res.textContent="Guessed number:"+randomnum
+            alert("YOU LOSS 😢 Guessed number:"+ randomnum)
+
+        }
+
+    }
+</script>
+</div>
+</body>
+</html>
